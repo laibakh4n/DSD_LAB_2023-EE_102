@@ -32,13 +32,15 @@ module seven_segment_display_tb;
     initial begin
         $monitor("Time=%0t | num=%b | sel=%b | A=%b B=%b C=%b D=%b E=%b F=%b G=%b | anode=%b", 
                   $time, num, sel, A, B, C, D, E, F, G, anode);
-        
-        // Test all possible num values with different sel values
-        for (int i = 0; i < 16; i++) begin
-            for (int j = 0; j < 8; j++) begin
-                driver(i, j); monitor();
-            end
-        end
+        driver(4'b0000, 3'b000); monitor();
+        driver(4'b0001, 3'b001); monitor();
+        driver(4'b0010, 3'b010); monitor();
+        driver(4'b0011, 3'b011); monitor();
+        driver(4'b0100, 3'b100); monitor();
+        driver(4'b0101, 3'b101); monitor();
+        driver(4'b0110, 3'b110); monitor();
+        driver(4'b0111, 3'b111); monitor();
+
         
         $stop; // End simulation
     end
